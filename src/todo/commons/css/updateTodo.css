@@ -1,0 +1,33 @@
+
+.modal.fade:not(.show) {
+    opacity: 1; 
+}
+
+
+.modal.fade {
+    
+    /* display box and so many more stuff made the modal buggy, top part was not visible and top border didn't apear. It looked really bad. Just a reminder to myself*/
+    display:table;
+    margin-top: 200px;
+    
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-backdrop {
+    opacity: 0.5 !important; 
+}
+
+.modal-content.error-div {
+    background-color: #ffe6e6; 
+}
+
+
+.important-border{
+
+    border-radius: 1px !important;
+    border-width: 1px !important;
+    border-top: 2px solid #000 !important;
+    border-left: 2px solid #000 !important;
+    border-bottom: 2px solid #000 !important;
+    border-right: 2px solid #000 !important;
+  }

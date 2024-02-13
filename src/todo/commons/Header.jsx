@@ -12,7 +12,7 @@ const Header = () => {
     
     const authContext = useAuth()
     const isAuthenticated = authContext.sharedValues.isAuthenticated
-    console.log(isAuthenticated)
+    //console.log(isAuthenticated)
 
     const logout = () =>
     {
@@ -24,11 +24,11 @@ const Header = () => {
         <div className="container">
             <div className="row">
                 <nav className="navbar navbar-expand-lg">
-                    <a className="navbar-brand ms-2 fs-2 fw-bold text-black" href="https://www.in28minutes.com">in28minutes</a>
+                    <a className="navbar-brand ms-2 fs-2 fw-bold text-black" href="https://www.google.com">Google</a>
                     <div className="collapse navbar-collapse">
                         <ul className="navbar-nav">
-                            {isAuthenticated && <li className="nav-item fs-5"><Link className="nav-link" to="/welcome/in28minutes">Home</Link></li>}
-                            {isAuthenticated && <li className="nav-item fs-5"><Link className="nav-link" to="/welcome/in28minutes">Home</Link></li> && <li className="nav-item fs-5"><Link className="nav-link" to={`/todos/${authContext.sharedValues.userName}`}>Todos</Link></li> }
+                            {isAuthenticated && <li className="nav-item fs-5"><Link className="nav-link" to={`/welcome/${authContext.sharedValues.userName}`}>Home</Link></li>}
+                            {isAuthenticated  && <li className="nav-item fs-5"><Link className="nav-link" to={`/todos/${authContext.sharedValues.userName}`}>Todos</Link></li> }
                         </ul>
                     </div>
                     <ul className="navbar-nav">

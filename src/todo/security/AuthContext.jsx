@@ -61,7 +61,7 @@ const AuthProvider = ({children}) =>{
         try{
 
             const response = await loginServiceApi(userName,userPassword)
-            console.log("Response status: " + response.data)
+            //console.log("Response status: " + response.data)
             if(response.status==200)
             {
             const jwToken = "Bearer " + response.data.token

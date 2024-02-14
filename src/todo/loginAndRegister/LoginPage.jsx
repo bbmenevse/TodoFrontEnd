@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {useAuth} from '../security/AuthContext'
+import { Link } from 'react-router-dom'
 
  const LoginPage = () =>{
 
@@ -32,7 +33,7 @@ import {useAuth} from '../security/AuthContext'
             if (await login(userName, userPassword)) {
                 setSuccessMessage(true)
                 navigate(`/welcome/${userName}`)
-                console.log("handlesubmit await")
+                
             } else {
                 console.log("There was an error.")
                 setSuccessMessage(false)
@@ -56,7 +57,7 @@ import {useAuth} from '../security/AuthContext'
               <div className="card-body p-4 p-lg-5 text-black">
                 <form>
                   <h5 className="fw-normal mb-3 pb-3" style={{letterSpacing:"1px"}}>Sign into your account</h5>
-                  <div className="error-div" hidden={successMessage}>
+                  <div className="error-div col-12 mb-4" hidden={successMessage}>
                     <div className="error-message">Username and password don't match! </div>
             </div>
                   <div className="form-outline mb-4">
@@ -70,9 +71,9 @@ import {useAuth} from '../security/AuthContext'
                   <div className="pt-1 mb-4">
                     <button className="btn btn-dark btn-lg btn-block" onClick={handleSubmit} type="button">Login</button>
                   </div>
-                  <p className="mb-5 pb-lg-2" style={{color:"#393f81"}}>Don't have an account? <a href="#!"
-                      style={{color:"#393f81"}}>Register here</a></p>
-                  <a href="#!" className="small text-muted">Terms of use.</a>
+
+                  <p className="mb-5 pb-lg-2" style={{color:"#393f81"}}>Don't have an account? <Link to="/register" className="fw-bold text-body" ><u>Register here</u></Link></p>
+                  <Link to="/tos" target="_blank" rel="noopener noreferrer" className="text-body"><u>Terms of service</u></Link>
                 </form>
 
               </div>

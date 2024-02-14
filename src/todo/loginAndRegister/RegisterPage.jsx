@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom'
+import { useNavigate } from "react-router-dom"
 import {useAuth} from '../security/AuthContext'
-import { useState } from "react";
+import { useState } from "react"
 
 const RegisterPage = () => {
 
@@ -21,9 +21,9 @@ const RegisterPage = () => {
 
   const [password,setPassword] = useState("")
 
-  const [warningMessage,setWarningMessage] = useState (true);
+  const [warningMessage,setWarningMessage] = useState (true)
 
-  const {termsOfService,setTermsOfServices} = useState(false)
+  const [termsOfService,setTermsOfService] = useState(false)
     
     const validateUser = () =>{
 
@@ -78,6 +78,10 @@ const handleEmailAdressChange = (event) => {
   setEmailAdress(event.target.value)
 }
 
+const handleTermsOfService = (event) => {
+  setTermsOfService(event.target.value)
+}
+
 const handlePasswordChange = (event) => {
   setPassword(event.target.value)
 }
@@ -88,10 +92,16 @@ const forwardLogin = () => {
 
 const handleSubmit = async () => {
 
-  console.log("First name: " + firstName)
+  console.log(termsOfService)
+
+  if(!termsOfService)
+  {
+    setErrorMessage("You have to agree to terms of service!")
+    setWarningMessage(false)
+  }
 
   const isValid = validateUser()
-  if(isValid)
+  if(isValid&&termsOfService)
   {
     try {
       if (await register(firstName,lastName,emailAdress,password)) {
@@ -143,7 +153,7 @@ const handleSubmit = async () => {
                 </div>
 
                 <div className="form-check d-flex justify-content-center mb-5">
-                  <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
+                  <input className="form-check-input me-2" type="checkbox" defaultValue={termsOfService} onChange={handleTermsOfService} />
                   <label className="form-check-label">
                     I agree all statements in <Link to="/tos" target="_blank" rel="noopener noreferrer" className="text-body"><u>Terms of service</u></Link>
                   </label>
@@ -154,7 +164,7 @@ const handleSubmit = async () => {
                     className="btn btn-success btn-block btn-lg gradient-custom-4 text-body" onClick={handleSubmit}>Register</button>
                 </div>
 
-                <p className="text-center text-muted mt-5 mb-0">Have already an account? <Link to="/login" className="fw-bold text-body" onClick={forwardLogin}><u>Login here</u></Link></p>
+                <p className="text-center text-muted mt-5 mb-0">Already have an account? <Link to="/login" className="fw-bold text-body" onClick={forwardLogin}><u>Login here</u></Link></p>
 
               </form>
 

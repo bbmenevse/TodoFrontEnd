@@ -104,7 +104,7 @@ const ListTodos = () => {
           <tbody>
             {todos.map((todo) => (
               <tr key={todo.id}>
-                <td style={{ maxWidth: '900px', wordWrap: 'break-word' }}>{todo.description}</td>
+                <td style={{ maxWidth: '60vh', wordWrap: 'break-word' }}>{todo.description}</td>
                 <td>{todo.done.toString()}</td>
 
                 <td>{todo.targetDate.toString()}</td>
